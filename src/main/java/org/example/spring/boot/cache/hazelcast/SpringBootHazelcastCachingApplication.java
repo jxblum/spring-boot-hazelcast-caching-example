@@ -15,11 +15,18 @@
  */
 package org.example.spring.boot.cache.hazelcast;
 
+import static org.cp.elements.lang.LangExtensions.assertThat;
+
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+
+import org.example.spring.boot.cache.hazelcast.model.User;
+import org.example.spring.boot.cache.hazelcast.service.UserService;
 
 /**
  * {@link SpringBootApplication} configuring and using Hazelcast as a JCache and Spring Cache Abstraction
@@ -34,21 +41,21 @@ import org.springframework.context.annotation.Profile;
  * @since 0.1.0
  */
 @SpringBootApplication
-@Profile("application")
+@Profile("hazelcast-application")
 @EnableCaching
 public class SpringBootHazelcastCachingApplication {
 
 	public static void main(String[] args) {
 
 		new SpringApplicationBuilder(SpringBootHazelcastCachingApplication.class)
-			.profiles("application", "hazelcast")
+			.profiles("hazelcast", "hazelcast-application", "hazelcast-client-server")
 			.web(WebApplicationType.NONE)
 			.build()
 			.run(args);
 	}
 
-	/*
 	@Bean
+	@Profile("debug")
 	@SuppressWarnings("unused")
 	ApplicationRunner runner(UserService userService) {
 
@@ -72,7 +79,8 @@ public class SpringBootHazelcastCachingApplication {
 			assertThat(cachedPieDoe).isEqualTo(pieDoe);
 			assertThat(cachedPieDoe).isNotSameAs(pieDoe);
 			assertThat(userService.isCacheMiss()).isFalse();
+
+			System.err.println("SUCCESS!");
 		};
 	}
-	*/
 }
