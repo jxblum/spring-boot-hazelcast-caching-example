@@ -38,6 +38,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>javax.cache</groupId>
+			<artifactId>cache-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.codeprimate</groupId>
 			<artifactId>cp-elements</artifactId>
 			<version>${codeprimate-elements.version}</version>
