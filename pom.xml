@@ -20,7 +20,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<codeprimate-elements.version>1.0.0-M9</codeprimate-elements.version>
-		<hazelcast.version>5.2.0</hazelcast.version>
+		<hazelcast.version>5.2.1</hazelcast.version>
 		<testcontainers.version>1.17.5</testcontainers.version>
 	</properties>
 
