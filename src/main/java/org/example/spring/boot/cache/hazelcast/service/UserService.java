@@ -36,6 +36,7 @@ import lombok.RequiredArgsConstructor;
  *
  * @author John Blum
  * @see org.example.spring.boot.cache.hazelcast.model.User
+ * @see org.example.spring.boot.cache.hazelcast.repo.UserRepository
  * @since 0.1.0
  */
 @Service
