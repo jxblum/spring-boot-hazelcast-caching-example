@@ -55,8 +55,8 @@ import lombok.Getter;
  */
 @SpringBootTest
 //@ActiveProfiles({ "hazelcast" })
-@ActiveProfiles({ "mock-configuration" })
-//@ActiveProfiles({ "mock-configuration", "hazelcast" })
+//@ActiveProfiles({ "mock-configuration" })
+@ActiveProfiles({ "mock-configuration", "hazelcast" })
 @SuppressWarnings("unused")
 public class SpringBootJpaHazelcastCachingIntegrationTests {
 
