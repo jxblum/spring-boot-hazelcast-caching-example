@@ -89,7 +89,7 @@ public class SpringBootJpaHazelcastCachingIntegrationTests {
 	@SpringBootConfiguration
 	@EnableAutoConfiguration
 	@EnableCaching
-	@ComponentScan(basePackageClasses = NonBeanType.class)
+	@ComponentScan(basePackageClasses = NonManagedBeanType.class)
 	static class TestConfiguration {
 
 		/*

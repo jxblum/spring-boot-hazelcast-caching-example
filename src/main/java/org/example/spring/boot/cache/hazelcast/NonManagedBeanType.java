@@ -16,11 +16,11 @@
 package org.example.spring.boot.cache.hazelcast;
 
 /**
- * Marker used to begin the Spring component scan.
+ * Marker interface used to begin the Spring component scan.
  *
  * @author John Blum
  * @since 0.1.0
  */
-public interface NonBeanType {
+public interface NonManagedBeanType {
 
 }
