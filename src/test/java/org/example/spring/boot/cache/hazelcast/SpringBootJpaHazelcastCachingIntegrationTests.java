@@ -81,7 +81,7 @@ public class SpringBootJpaHazelcastCachingIntegrationTests {
 		User cachedJonDoe = getUserService().findBy(jonDoe.getName());
 
 		assertThat(cachedJonDoe).isNotNull();
-		//assertThat(cachedJonDoe).isNotSameAs(jonDoe);
+		assertThat(cachedJonDoe).isNotSameAs(jonDoe);
 		assertThat(cachedJonDoe).isEqualTo(jonDoe);
 		assertThat(getUserService().isCacheMiss()).isFalse();
 	}
@@ -90,15 +90,7 @@ public class SpringBootJpaHazelcastCachingIntegrationTests {
 	@EnableAutoConfiguration
 	@EnableCaching
 	@ComponentScan(basePackageClasses = NonManagedBeanType.class)
-	static class TestConfiguration {
-
-		/*
-		@Bean
-		public @NonNull CacheConfiguration<String, User> hazelcastUsersCacheConfiguration() {
-			return new CacheConfig<String, User>("Users").setStoreByValue(true);
-		}
-		*/
-	}
+	static class TestConfiguration { }
 
 	@SpringBootConfiguration
 	@Profile("mock-configuration")
