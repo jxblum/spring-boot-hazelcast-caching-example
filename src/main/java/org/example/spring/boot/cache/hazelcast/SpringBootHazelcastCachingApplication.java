@@ -18,6 +18,7 @@ package org.example.spring.boot.cache.hazelcast;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Profile;
 
 /**
@@ -25,13 +26,16 @@ import org.springframework.context.annotation.Profile;
  * caching provider.
  *
  * @author John Blum
+ * @see org.springframework.boot.ApplicationRunner
  * @see org.springframework.boot.autoconfigure.SpringBootApplication
  * @see org.springframework.boot.builder.SpringApplicationBuilder
+ * @see org.springframework.cache.annotation.EnableCaching
  * @see org.springframework.context.annotation.Profile
  * @since 0.1.0
  */
 @SpringBootApplication
 @Profile("application")
+@EnableCaching
 public class SpringBootHazelcastCachingApplication {
 
 	public static void main(String[] args) {
@@ -42,4 +46,33 @@ public class SpringBootHazelcastCachingApplication {
 			.build()
 			.run(args);
 	}
+
+	/*
+	@Bean
+	@SuppressWarnings("unused")
+	ApplicationRunner runner(UserService userService) {
+
+		return args -> {
+
+			User pieDoe = userService.findBy("PieDoe");
+
+			assertThat(pieDoe).isNull();
+			assertThat(userService.isCacheMiss()).isTrue();
+
+			pieDoe = userService.save(User.as("PieDoe"));
+
+			assertThat(pieDoe).isNotNull();
+			assertThat(pieDoe.getId()).isNotNull();
+			assertThat(pieDoe.getName()).isEqualTo("PieDoe");
+			assertThat(userService.isCacheMiss()).isFalse();
+
+			User cachedPieDoe = userService.findBy(pieDoe.getName());
+
+			assertThat(cachedPieDoe).isNotNull();
+			assertThat(cachedPieDoe).isEqualTo(pieDoe);
+			assertThat(cachedPieDoe).isNotSameAs(pieDoe);
+			assertThat(userService.isCacheMiss()).isFalse();
+		};
+	}
+	*/
 }
